@@ -1,0 +1,49 @@
+﻿<Window x:Class="Brain_Ring.Views.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:control="clr-namespace:Brain_Ring.Controls"
+        xmlns:server="clr-namespace:LogicBrainRing.Server;assembly=LogicBrainRing"
+        d:DataContext="{d:DesignInstance server:GameViewModel}"
+        mc:Ignorable="d"
+        Title="GameWindow" Height="768" Width="1366">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="445*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="530*"/>
+            <RowDefinition Height="65*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Backgrounds/brain-ring-background-1366x768.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <StackPanel ZIndex="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,0">
+            <Image Source="pack://siteoforigin:,,,/Images/Banners/banner_bibliynuy_konkurs_3a.png" Stretch="Fill"/>
+        </StackPanel>
+        <Image  Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="LogoBibleCompetition" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="220" Source="/Brain-Ring;component/Images/Logo/logo_bibliynuy_konkurs.png" Stretch="Fill"/>
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Image Source="/Brain-Ring;component/Images/Banners/menu_banner.png" Stretch="Fill"/>
+                <TextBlock Text="ГРА" Margin="0,0,0,20" VerticalAlignment="Center" HorizontalAlignment="Center"  TextWrapping="Wrap"  FontFamily="/Brain-Ring;component/Fonts/#DexterC" FontSize="40" TextAlignment="Center" Foreground="#FFE7E7F1"/>
+            </Grid>
+        </DockPanel>
+
+        <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" >
+            <DockPanel>
+
+            </DockPanel>
+        </Grid>
+        <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="TimerButton" Content="ТАЙМЕР" HorizontalAlignment="Center" Height="40" Width="235"  Style="{StaticResource SystemButtonStyle}"/>
+            <Button x:Name="OptionsButton" Content="ТАБЛО" HorizontalAlignment="Center" Height="40" Width="235"  Style="{StaticResource SystemButtonStyle}"/>
+            <Button x:Name="SettingsButton" Content="НАЛАШТУВАННЯ" HorizontalAlignment="Center" Height="40" Width="235"  Style="{StaticResource SystemButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window>

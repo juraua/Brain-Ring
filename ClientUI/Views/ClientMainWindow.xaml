@@ -1,0 +1,24 @@
+﻿<Window x:Class="ClientUI.ClientMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="ClientMainWindow"
+        Width="1366"
+        Height="768"
+        Loaded="ClientMainWindow_OnLoaded"
+        SizeChanged="Window_SizeChanged"
+        mc:Ignorable="d">
+    <Grid>
+        <DockPanel Grid.Row="0" Grid.Column="0">
+            <DockPanel.Background>
+                <ImageBrush AlignmentX="Center"
+                            AlignmentY="Top"
+                            ImageSource="Images/Backgrounds/brain-ring-background-1366x768.png" />
+            </DockPanel.Background>
+            <Viewbox Stretch="Fill">
+                <StackPanel Name="ClientMainViewBox" Margin="0" />
+            </Viewbox>
+        </DockPanel>
+    </Grid>
+</Window>

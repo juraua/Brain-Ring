@@ -1,0 +1,62 @@
+﻿<Window x:Class="Brain_Ring.Controls.ConnectWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             xmlns:server="clr-namespace:LogicBrainRing.Server;assembly=LogicBrainRing"
+             d:DataContext="{d:DesignInstance server:GameViewModel}"
+             Title="ConnectWindow" Height="440" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="354*"/>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Backgrounds/connect-background-1.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <Button x:Name="GameBeginButton" Content="ПОЧАТИ ГРУ" Grid.Column="0" Grid.Row="1" Width="230" Height="40" HorizontalAlignment="Right" Click="GameBeginButton_OnClick" Style="{StaticResource SystemButtonStyle}" Margin="5,0,5,5">
+        </Button>
+        <Button x:Name="BackButton" Grid.Column="1" Grid.Row="1" Content="НАЗАД" Height="40" HorizontalAlignment="Left" Width="150" Click="BackButton_OnClick" Style="{StaticResource SystemButtonStyle}" Margin="5,0,5,5">
+        </Button>
+        <GroupBox Header="Інформація про гру" Grid.Column="0" Grid.Row="0" Style="{DynamicResource SettingsHeaderStyle}">
+            <StackPanel Orientation="Vertical" Margin="10,0">
+                <Label  Margin="0,-5" Foreground="Salmon" FontSize="20" Style="{StaticResource txtConnectWindowStyle}" Content="Гру налаштовано!"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Раунди : 5"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Команди : 4"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Раунд І : Запитань - 17"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Раунд ІІ : Запитань - 50"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Раунд ІІІ : Запитань - 3"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Раунд ІV : Запитань - 12"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Раунд V : Запитань - 4"/>
+                <Label Style="{StaticResource txtConnectWindowStyle}" Content="Всього балів : 63"/>
+                
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Підключення команд" Grid.Column="1" Grid.Row="0" Style="{DynamicResource SettingsHeaderStyle}">
+            <StackPanel Orientation="Vertical">
+                <Grid Height="315">
+                    <Grid.Resources>
+                        
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="TeamOneBoarder" Grid.Row="0" Content="Команда 1" Style="{DynamicResource lblTeamConnectedStyle}"/>
+                    <Label x:Name="TeamTwoBoarder" Grid.Row="1" Content="Команда 2" Style="{DynamicResource lblTeamConnectedStyle}"/>
+                    <Label x:Name="TeamThreeBoarder" Grid.Row="2" Content="Команда 3" Style="{DynamicResource lblTeamDisconnectStyle}"/>
+                    <Label x:Name="TeamFourBoarder" Grid.Row="3" Content="Команда 4" Style="{DynamicResource lblTeamConnectedStyle}"/>
+                    <Label  Grid.Row="4" Margin="0" Foreground="Salmon" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource txtConnectWindowStyle}" Content="Очікування команд..."/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
