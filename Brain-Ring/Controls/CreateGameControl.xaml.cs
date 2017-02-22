@@ -56,6 +56,15 @@ namespace Brain_Ring.Controls
         private void cmbGameTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = (ComboBox) sender;
+            //switch (comboBox.Tag.ToString())
+            //{
+            //    case "Біблійний конкурс": //Загрузить из БД вопросы, соответствующие выбранной тематике
+            //        break;
+            //    case "Історичний конкурс": //Загрузить из БД вопросы, соответствующие выбранной тематике
+            //        break;
+            //    case "Математичний конкурс": //Загрузить из БД вопросы, соответствующие выбранной тематике
+            //        break;
+            //}
             //_dataContext.Rounds = new ObservableCollection<RoundGame>(new List<RoundGame>((int)cmbGameTheme.SelectedItem));
             //cmbGameTheme.SelectedItem
         }

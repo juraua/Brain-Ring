@@ -22,13 +22,17 @@
 
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Theme> Themes { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Points> Points { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public void Seed()
         {
+            //Добавить Вопросы
+
+
             /*
             //заполнение таблицы "Вопросы"
             List<Question> questions = new List<Question>
@@ -74,7 +78,7 @@
                 Points = 0
             });
             */
-            var category1 = this.Categories.Add(new Category()
+            var theme1 = this.Themes.Add(new Theme()
             {
                 Name = "Общие",
                 Description = "...",
@@ -106,10 +110,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -137,10 +141,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -168,10 +172,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -199,10 +203,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -230,10 +234,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -261,10 +265,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -292,10 +296,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -323,10 +327,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -354,10 +358,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -385,10 +389,10 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             this.Questions.Add(new Question()
             {
@@ -416,17 +420,12 @@
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
-
-
-
-
-
-
+            
             //сохранение изменений
             this.SaveChanges();
         }

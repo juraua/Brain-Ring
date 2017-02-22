@@ -27,11 +27,11 @@ namespace LogicBrainRing.Server.Classes
         #endregion
 
         public RoundGame Round { get; set; }
-        public ObservableCollection<String> Categories { get; set; }
-        private int _category;
+        public ObservableCollection<Theme> Themes { get; set; }
+        private int _theme;
 
         public Question Question { get; set; }
-        private int _answer;
+        private int _answerId;
 
         private int _time;
 
@@ -46,7 +46,7 @@ namespace LogicBrainRing.Server.Classes
         {
             Round = model;
             Question = question;
-            _answer = -1;
+            _answerId = -1;
             _time = (int)question.Round == 2 ? 1 : 3;
         }
 
@@ -55,11 +55,11 @@ namespace LogicBrainRing.Server.Classes
         #region Get, Set
         public int Answer
         {
-            get { return _answer; }
+            get { return _answerId; }
             set
             {
-                if (value == _answer) return;
-                _answer = value;
+                if (value == _answerId) return;
+                _answerId = value;
                 OnPropertyChanged();
             }
         }

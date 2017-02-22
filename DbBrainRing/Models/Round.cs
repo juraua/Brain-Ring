@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DbBrainRing.Enums;
 
 namespace DbBrainRing.Models
 {
-    public class Category
+    public class Round
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public RoundType RoundType { get; set; }
+        public int QuestionCount { get; set; }
+        public int AllPoints { get; set; }
     }
 }

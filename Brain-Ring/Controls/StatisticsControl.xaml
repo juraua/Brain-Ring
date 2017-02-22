@@ -64,14 +64,14 @@
                                             <DataGridTextColumn Header="Команда" Width="400" Binding="{Binding Name}"
                                                                 ElementStyle="{DynamicResource StatisticsContentStyle}" 
                                                                 HeaderStyle="{DynamicResource StatisticsHeaderStyle}"/>
-                                            <DataGridTextColumn Header="Бали" Width="100" Binding="{Binding Points}"
+                                            <DataGridTextColumn Header="Бали" Width="100" Binding="{Binding AllPoints}"
                                                                 ElementStyle="{DynamicResource StatisticsContentStyle}"
                                                                 HeaderStyle="{DynamicResource StatisticsHeaderStyle}"/>
-                                            <DataGridTextColumn Header="Ігри" Width="100" Binding="{Binding Games}"
+                                            <DataGridTextColumn Header="Ігри" Width="100" Binding="{Binding GamesCount}"
                                                                 ElementStyle="{DynamicResource StatisticsContentStyle}"
                                                                 HeaderStyle="{DynamicResource StatisticsHeaderStyle}"/>
                                             <DataGridTextColumn Header="Склад команди" Width="500" 
-                                                                Binding="{Binding Information}"
+                                                                Binding="{Binding Description}"
                                                                 ElementStyle="{DynamicResource StatisticsContentStyle}"
                                                                 HeaderStyle="{DynamicResource StatisticsHeaderStyle}"/>
                                         </DataGrid.Columns>

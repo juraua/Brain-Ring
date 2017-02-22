@@ -20,7 +20,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Backgrounds/brain-ring-logo-mockup-1366x768.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-            <Grid  Grid.Row="1" Grid.Column="1" Margin="0,10,0,10" DockPanel.Dock="Top">
+            <Grid  Grid.Row="1" Grid.Column="1" Margin="0,10" DockPanel.Dock="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>

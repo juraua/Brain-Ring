@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,6 +12,7 @@ using DbBrainRing;
 using DbBrainRing.Enums;
 using DbBrainRing.Models;
 using LogicBrainRing.Server.HelperClasses;
+using System.Reflection;
 
 namespace LogicBrainRing.Server.Classes
 {
@@ -36,8 +38,8 @@ namespace LogicBrainRing.Server.Classes
         private int _question;
         private int _questionsCount;
         private int _maxQuestionsCount;
-        public ObservableCollection<RoundType> Types{ get; set; }
-        private int _type;
+        public ObservableCollection<string> Types { get; set; }
+        private string _type;
         private int _time;
 
         public RoundGame()
@@ -52,6 +54,7 @@ namespace LogicBrainRing.Server.Classes
             _questionsCount = roundGame.QuestionsCount;
             _maxQuestionsCount = roundGame.MaxQuestionsCount;
             Types = roundGame.Types;
+            //Types = myEnumDisplay;
             _type = roundGame.Type;
             _time = roundGame.Time;
         }
@@ -89,7 +92,7 @@ namespace LogicBrainRing.Server.Classes
             }
         }
 
-        public int Type
+        public string Type
         {
             get { return _type; }
             set
@@ -121,7 +124,9 @@ namespace LogicBrainRing.Server.Classes
 
         #endregion
 
+        
 
-
+        //var myEnumDisplay = from RoundType rt in Enum.GetValues(typeof(RoundType))
+        //                    select new { ID = (int)rt, Name = Enumerations.GetEnumDisplay(rt) };
     }
 }

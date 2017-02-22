@@ -28,7 +28,7 @@ namespace Brain_Ring.Controls.Components
             InitializeComponent();
             QuestionUpDownControl.ScrollBar.Maximum = 50;
             QuestionUpDownControl.ScrollBar.Value = 20;
-            //----------------Пример пвязки-------------------------------
+            //----------------Пример привязки-------------------------------
 //            CommandBinding bind = new CommandBinding(ApplicationCommands.New);
 //            bind.Executed +=
 //                delegate(object sender, ExecutedRoutedEventArgs args)

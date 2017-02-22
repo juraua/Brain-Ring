@@ -12,11 +12,12 @@ namespace DbBrainRing.Models
         [Required]
         public string Captain { get; set; }
         [Required]
-        public string Information { get; set; }
-        public int Points { get; set; }
-        //Create list of members
-        [NotMapped]
-        public int Games { get; set; }
+        public string Description { get; set; }
+        //Набранные балы за все игры
+        public int AllPoints { get; set; }
+        //Кол-во сыгранных игр (выбрать с таблицы Points все записи с текущей командой и присвоить Count записей - реализовать при выводе Статистики)
+        //[NotMapped]
+        public int GamesCount { get; set; }
 
     }
 }

@@ -87,12 +87,12 @@
                     <DockPanel>
                         <ComboBox x:Name="cmbGameTheme"
                                   Width="260"
-                                  ItemsSource="{Binding Categories,
+                                  ItemsSource="{Binding Themes,
                                                         Mode=TwoWay}"
-                                  SelectedIndex="{Binding Category,
+                                  SelectedIndex="{Binding Theme,
                                                           Mode=TwoWay}"
                                   SelectionChanged="cmbGameTheme_SelectionChanged"
-                                  Style="{StaticResource ComboBoxGameSettingsStyle}" />
+                                  Style="{StaticResource ComboBoxGameSettingsStyle}" Tag="Thame" />
                     </DockPanel>
                 </StackPanel>
 

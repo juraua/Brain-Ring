@@ -8,13 +8,14 @@ using LogicBrainRing.Server.HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DbBrainRing;
 using DbBrainRing.Enums;
 
 namespace LogicBrainRing.Server
 {
     public class GameViewModel : INotifyPropertyChanged
     {
-        #region реализация интерфейса INotifyPropertyChanged
+        #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -25,20 +26,44 @@ namespace LogicBrainRing.Server
         }
 
         #endregion
+
         /// <summary>
         /// This is game
         /// </summary>
+        private readonly BrainRingContext _context;
         public Game Game { get; set; }
-        public ObservableCollection<String> Categories { get; set; }
-        private int _category;
+        //---------чому Themes - String ????????----------------- 
+        public ObservableCollection<Theme> Themes { get; set; }
+        private int _theme;
         public ObservableCollection<RoundGame> Rounds { get; set; }
         private int _round;
         private int _roundsIndex;
-        public ObservableCollection<Team> Teams { get; set; }
+        public ObservableCollection<DictionaryItem> Teams { get; set; }
         private int _team;
         private int _teamsIndex;
         public ObservableCollection<Points> Points { get; set; }
+        //public ObservableCollection<Category> Categories { get; set; }
 
+        #region Constructors
+
+        public GameViewModel()
+        {
+            
+        }
+
+        public GameViewModel(BrainRingContext contex)
+        {
+            //_context = contex;
+            ////Game = game;
+            //Themes = new ObservableCollection<Theme>(_context.Themes.OrderBy(x=> x));
+            //Teams = new ObservableCollection<DictionaryItem>(_context.Teams.Select(x => new DictionaryItem{Id = x.Id, Name = x.Name}));
+            //Points = new ObservableCollection<Points>(_context.Points);
+            ////Cathegories = new ObservableCollection<Cathegory>(_context.Cathegories);
+            ////-----------Добавить RoundGame в БД???----------
+            //Rounds = new ObservableCollection<RoundGame>(_context.);
+        }
+
+        #endregion
 
         #region Get, Set - Observables
 
@@ -63,20 +88,20 @@ namespace LogicBrainRing.Server
                 OnPropertyChanged();
             }
         }
-        public int Category
+        public int Theme
         {
-            get { return _category; }
+            get { return _theme; }
             set
             {
-                if (value == _category) return;
+                if (value == _theme) return;
                 if (Rounds != null && Rounds.Count != 0)
                 {
-                    foreach (var r in Rounds)
+                    foreach (var round in Rounds)
                     {
-                        ViewModelHelper.SetQuestions(r, value);
+                        ViewModelHelper.SetQuestions(round, value);
                     }
                 }
-                _category = value;
+                _theme = value;
                 OnPropertyChanged();
             }
         }
@@ -101,54 +126,62 @@ namespace LogicBrainRing.Server
             }
         }
 
+        //public int Category { get; set; }
+
         #endregion
 
-        private void testContent()
+        public class RoundTypeCheckItem
         {
-            Category category = new Category { Name = "Тема1" };
-            Categories = new ObservableCollection<String>{
-                category.Name, "Тема2","Тема3"
-            };
-            foreach (var r in Rounds)
-            {
-                r.Questions = new ObservableCollection<QuestionGame>
-                {
-                    new QuestionGame
-                    {
-                        Question = new Question
-                        {
-                            Content = "Вопрос1",
-                            Category = category,
-                            Answers = new List<Answer>
-                            {
-                                new Answer()
-                                {
-                                    Content = "Ответ1",
-                                    IsCorrect = false
-                                },
-                                new Answer()
-                                {
-                                    Content = "Ответ2",
-                                    IsCorrect = false
-                                },
-                                new Answer()
-                                {
-                                    Content = "Ответ3",
-                                    IsCorrect = true
-                                },
-                                new Answer()
-                                {
-                                    Content = "Ответ4",
-                                    IsCorrect = false
-                                },
-                            },
-                            Points = 3,
-                            QuestionType = QuestionType.Варианты,
-                            Round = RoundType.Общее
-                        }
-                    }
-                };
-            }
+            public bool Checked { get; set; }
+            public string Name { get; set; }
+            public RoundType RoundName { get; set; }
         }
+        //private void testContent()
+        //{
+        //    Theme theme = new Theme { Name = "Тема1" };
+        //    Themes = new ObservableCollection<Theme>{
+        //        theme.Name, "Тема2","Тема3"
+        //    };
+        //    foreach (var r in Rounds)
+        //    {
+        //        r.Questions = new ObservableCollection<QuestionGame>
+        //        {
+        //            new QuestionGame
+        //            {
+        //                Question = new Question
+        //                {
+        //                    Content = "Вопрос1",
+        //                    Theme = theme,
+        //                    Answers = new List<Answer>
+        //                    {
+        //                        new Answer()
+        //                        {
+        //                            Content = "Ответ1",
+        //                            IsCorrect = false
+        //                        },
+        //                        new Answer()
+        //                        {
+        //                            Content = "Ответ2",
+        //                            IsCorrect = false
+        //                        },
+        //                        new Answer()
+        //                        {
+        //                            Content = "Ответ3",
+        //                            IsCorrect = true
+        //                        },
+        //                        new Answer()
+        //                        {
+        //                            Content = "Ответ4",
+        //                            IsCorrect = false
+        //                        },
+        //                    },
+        //                    Points = 3,
+        //                    QuestionType = QuestionType.CheckBox,
+        //                    Round = RoundType.Main
+        //                }
+        //            }
+        //        };
+        //    }
+        //}
     }
 }

@@ -10,11 +10,17 @@ namespace DbBrainRing.Models
 {
     public class Points
     {
-        [Key, Column(Order = 0)]
-        public int GameId { get; set; }
-        [Key, Column(Order = 1)]
-        public int TeamId { get; set; }
+        [Key]
+        public int Id { get; set; }
+        //Связь многие ко многим - у одной команды несколько игр, в одной игре учавствуют несколько команд
+        //[Key, Column(Order = 0)]
         [Required]
-        public int Value { get; set; }
+        public Game Game { get; set; }
+        //[Key, Column(Order = 1)]
+        [Required]
+        public Team Team { get; set; }
+        //Набранные балы в одной игре соответствующей командой
+        [Required]
+        public int ValueCurrent { get; set; }
     }
 }

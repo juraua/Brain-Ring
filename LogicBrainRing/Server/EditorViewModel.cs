@@ -25,22 +25,24 @@ namespace LogicBrainRing.Server
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
         #endregion
 
         //модель базы данных
         private readonly BrainRingContext _model;
         public ObservableCollection<Team> Teams { get; private set; }
         private int _team;
-        public ObservableCollection<Category> Categories { get; private set; }
-        private int _category;
+        public ObservableCollection<Theme> Themes { get; private set; }
+        private int _theme;
         public ObservableCollection<Question> Questions { get; private set; }
         private int _question;
         public ObservableCollection<Answer> Answers { get; private set; }
         private int _answer;
-
         private int _round;
+        private int _category;
+        public ObservableCollection<Category> Categories { get; private set; }
 
-        #region Конструкторы
+        #region Constructors
 
         public EditorViewModel()
             : this(new BrainRingContext())
@@ -51,11 +53,10 @@ namespace LogicBrainRing.Server
         {
             _model = model;
             Teams = new ObservableCollection<Team>(_model.Teams);
-            Categories = new ObservableCollection<Category>(_model.Categories);
+            Themes = new ObservableCollection<Theme>(_model.Themes);
             Questions = new ObservableCollection<Question>(_model.Questions);
-
+            Categories = new ObservableCollection<Category>(_model.Categories);
         }
-
         #endregion
 
         #region Get, Set
@@ -67,6 +68,16 @@ namespace LogicBrainRing.Server
             {
                 if (value == _question) return;
                 _question = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Theme
+        {
+            get { return _theme; }
+            set
+            {
+                if (value == _theme) return;
+                _theme = value;
                 OnPropertyChanged();
             }
         }
@@ -131,16 +142,38 @@ namespace LogicBrainRing.Server
                 OnPropertyChanged();
             }
         }
-        public string TeamInformation
+        public string TeamDescription
         {
-            get { return Teams[Team].Information; }
+            get { return Teams[Team].Description; }
             set
             {
-                if (value == Teams[Team].Information) return;
-                Teams[Team].Information = value;
+                if (value == Teams[Team].Description) return;
+                Teams[Team].Description = value;
                 OnPropertyChanged();
             }
         }
+
+        public string ThemeName
+        {
+            get { return Themes[Theme].Name; }
+            set
+            {
+                if (value == Themes[Theme].Name) return;
+                Themes[Theme].Name = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ThemeDescription
+        {
+            get { return Themes[Theme].Description; }
+            set
+            {
+                if (value == Themes[Theme].Description) return;
+                Themes[Theme].Description = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string CategoryName
         {
             get { return Categories[Category].Name; }
@@ -161,6 +194,17 @@ namespace LogicBrainRing.Server
                 OnPropertyChanged();
             }
         }
+        /*public int QuestionCategory
+        {
+            get { return Questions[Question].Id; }
+            set
+            {
+                if (value == Questions[Question].Id) return;
+                Questions[Question].Id = value;
+                OnPropertyChanged();
+            }
+        }*/
+
         public string QuestionContent
         {
             get { return Questions[Question].Content; }
@@ -178,26 +222,6 @@ namespace LogicBrainRing.Server
             {
                 if (value == (int)Questions[Question].Round) return;
                 Questions[Question].Round = (RoundType)value;
-                OnPropertyChanged();
-            }
-        }
-        public int QuestionCategory
-        {
-            get { return Questions[Question].Id; }
-            set
-            {
-                if (value == Questions[Question].Id) return;
-                Questions[Question].Id = value;
-                OnPropertyChanged();
-            }
-        }
-        public string QuestionSubcategory
-        {
-            get { return Questions[Question].Subcategory; }
-            set
-            {
-                if (value == Questions[Question].Subcategory) return;
-                Questions[Question].Subcategory = value;
                 OnPropertyChanged();
             }
         }
@@ -232,37 +256,56 @@ namespace LogicBrainRing.Server
                 OnPropertyChanged();
             }
         }
+        public bool AnswerIsCorrect
+        {
+            get { return Answers[Answer].IsCorrect; }
+            set
+            {
+                if (value == Answers[Answer].IsCorrect) return;
+                Answers[Answer].IsCorrect = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
-
-        public void NewTeam()
+        #region Create functions
+        public void CreateTeam()
         {
             Teams.Add(new Team());
             _team = Teams.Count - 1;
         }
-        public void NewCategory()
+        public void CreateTheme()
+        {
+            Themes.Add(new Theme());
+            _theme = Themes.Count - 1;
+        }
+        public void CreateCategory()
         {
             Categories.Add(new Category());
             _category = Categories.Count - 1;
         }
-        public void NewQuestion()
+        public void CreateQuestion()
         {
             Questions.Add(new Question());
             _question = Questions.Count - 1;
         }
-        public void NewAnswer()
+        public void CreateAnswer()
         {
             Answers.Add(new Answer());
             _answer = Answers.Count - 1;
         }
+        #endregion
 
-
-        #region функции для работы с БД
+        #region Add functions for Db
 
         public void AddTeamDb()
         {
             _model.Teams.Add(Teams[Team]);
+        }
+        public void AddThemeDb()
+        {
+            _model.Themes.Add(Themes[Theme]);
         }
         public void AddCategoryDb()
         {
@@ -276,19 +319,28 @@ namespace LogicBrainRing.Server
         {
             _model.Answers.Add(Answers[Answer]);
         }
+        #endregion
 
+        #region Change functions for Db
+        //------------Зміна команди????-------------
         public void ChangeTeamDb()
         {
             var team = _model.Teams.ElementAt(Teams[Team].Id);
             team.Captain = Teams[Team].Captain;
-            team.Information = Teams[Team].Information;
+            team.Description = Teams[Team].Description;
             team.Name = Teams[Team].Name;
+        }
+        public void ChangeThemeDb()
+        {
+            var theme = _model.Themes.ElementAt(Themes[Theme].Id);
+            theme.Name = Themes[Theme].Name;
+            theme.Description = Themes[Theme].Description;
         }
         public void ChangeCategoryDb()
         {
-            var category = _model.Categories.ElementAt(Categories[Category].Id);
-            category.Name = Categories[Category].Name;
-            category.Description = Categories[Category].Description;
+            var cathegory = _model.Categories.ElementAt(Categories[Category].Id);
+            cathegory.Name = Categories[Category].Name;
+            cathegory.Description = Categories[Category].Description;
         }
         public void ChangeQuestionDb()
         {
@@ -299,7 +351,7 @@ namespace LogicBrainRing.Server
             question.Points = Questions[Question].Points;
             question.QuestionType = Questions[Question].QuestionType;
             question.Round = Questions[Question].Round;
-            question.Subcategory = Questions[Question].Subcategory;
+            question.Category = Questions[Question].Category;
         }
         public void ChangeAnswerDb()
         {
@@ -307,10 +359,17 @@ namespace LogicBrainRing.Server
             answer.Content = Answers[Answer].Content;
             answer.Id = Answers[Answer].Id;
         }
+        #endregion
+
+        #region Remove functions for Db
 
         public void RemoveTeamDb()
         {
             _model.Teams.Remove(Teams[Team]);
+        }
+        public void RemoveThemeDb()
+        {
+            _model.Themes.Remove(Themes[Theme]);
         }
         public void RemoveCategoryDb()
         {
@@ -324,33 +383,40 @@ namespace LogicBrainRing.Server
         {
             _model.Answers.Remove(Answers[Answer]);
         }
+        #endregion
 
-        public void RessetUpdateTeams()
+        #region ResetUpdate functions
+        public void ResetUpdateTeams()
         {
             Teams = new ObservableCollection<Team>(_model.Teams);
         }
-        public void RessetUpdateCategories()
+        public void ResetUpdateCategory()
         {
             Categories = new ObservableCollection<Category>(_model.Categories);
         }
-        public void RessetUpdateQuestions()
+        public void ResetUpdateThemes()
+        {
+            Themes = new ObservableCollection<Theme>(_model.Themes);
+        }
+        public void ResetUpdateQuestions()
         {
             Questions = new ObservableCollection<Question>(_model.Questions);
         }
-        public void RessetUpdateAnswers()
+        public void ResetUpdateAnswers()
         {
             Answers = new ObservableCollection<Answer>(_model.Answers);
         }
 
         #endregion
 
-        //загрузка данных
+       //загрузка данных
         public void LoadData()
         {
             _model.Teams.Load();
-            _model.Categories.Load();
+            _model.Themes.Load();
             _model.Questions.Load();
             _model.Answers.Load();
+            _model.Categories.Load();
         }
         //сохранение данных
         private void SaveChanges()

@@ -15,7 +15,7 @@ namespace DbBrainRing.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(BrainRingContext context)
@@ -25,29 +25,38 @@ namespace DbBrainRing.Migrations
             {
                 Name = "Команда А",
                 Captain = "Вася",
-                Information = "Васина команда",
-                Points = 20
+                Description = "Васина команда",
+                AllPoints = 20
             });
             context.Teams.Add(new Team()
             {
                 Name = "Команда Б",
                 Captain = "Петя",
-                Information = "Петина команда",
-                Points = 100
+                Description = "Петина команда",
+                AllPoints = 100
             });
             context.Teams.Add(new Team()
             {
                 Name = "Команда Х",
                 Captain = "Эдуард",
-                Information = "Эдика команда",
-                Points = 0
+                Description = "Эдика команда",
+                AllPoints = 0
             });
-            var category1 = context.Categories.Add(new Category()
+            var theme1 = context.Themes.Add(new Theme()
             {
-                Name = "Общие",
-                Description = "...",
+                Name = "Історичний конкурс",
+                Description = "Запитанняя з всесвітньої історії",
             });
-
+            var theme2 = context.Themes.Add(new Theme()
+            {
+                Name = "Математичний конкурс",
+                Description = "Запитанняя з математики",
+            });
+            var theme3 = context.Themes.Add(new Theme()
+            {
+                Name = "Біблійний конкурс",
+                Description = "Запитанняя по Біблії",
+            });
             context.Questions.Add(new Question()
             {
                 Content = "Текст вопроса 1",
@@ -74,10 +83,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -105,10 +114,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -136,10 +145,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -167,10 +176,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -198,10 +207,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -229,10 +238,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -260,10 +269,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -291,10 +300,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -322,10 +331,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -353,10 +362,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -384,10 +393,10 @@ namespace DbBrainRing.Migrations
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
 
             //сохранение изменений
@@ -396,3 +405,8 @@ namespace DbBrainRing.Migrations
         }
     }
 }
+
+//Команды для миграции 
+//Enable-Migrations –EnableAutomaticMigrations  //Включить автоматическую миграцию
+//Add-Migration Name_Migrations //Создает файл миграции,вместо "Name_Migrations" указать имя миграции,напр.: FirstMigration
+//Update-Database –Verbose //Обновить базу данных на основе последней миграции

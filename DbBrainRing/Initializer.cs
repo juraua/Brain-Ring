@@ -36,22 +36,22 @@ namespace DbBrainRing
             {
                 Name = "Команда А",
                 Captain = "Вася",
-                Information = "Васина команда",
-                Points = 20
+                Description = "Васина команда",
+                AllPoints = 20
             });
             context.Teams.Add(new Team()
             {
                 Name = "Команда Б",
                 Captain = "Петя",
-                Information = "Петина команда",
-                Points = 100
+                Description = "Петина команда",
+                AllPoints = 100
             });
             context.Teams.Add(new Team()
             {
                 Name = "Команда Х",
                 Captain = "Эдуард",
-                Information = "Эдика команда",
-                Points = 0
+                Description = "Эдика команда",
+                AllPoints = 0
             });
 
             //сохранение изменений
@@ -63,7 +63,7 @@ namespace DbBrainRing
         {
             using (var context = new BrainRingContext())
             {
-                            var category1 = context.Categories.Add(new Category()
+                var theme1 = context.Themes.Add(new Theme()
             {
                 Name = "Общие",
                 Description = "...",
@@ -77,28 +77,14 @@ namespace DbBrainRing
                     new Answer()
                     {
                         Content = "ответ 1",
-                        IsCorrect = false
-                    },
-                    new Answer()
-                    {
-                        Content = "ответ 2",
-                        IsCorrect = false
-                    },
-                    new Answer()
-                    {
-                        Content = "ответ 3",
                         IsCorrect = true
-                    },
-                    new Answer()
-                    {
-                        Content = "ответ 4",
-                        IsCorrect = false
                     }
+                    
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -126,10 +112,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -157,10 +143,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -188,10 +174,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -219,10 +205,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -250,10 +236,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -281,10 +267,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -312,10 +298,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -343,10 +329,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -374,10 +360,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
             context.Questions.Add(new Question()
             {
@@ -405,10 +391,10 @@ namespace DbBrainRing
                         IsCorrect = false
                     }
                 },
-                Category = category1,
+                Theme = theme1,
                 Points = 1,
-                Round = RoundType.Общее,
-                QuestionType = QuestionType.Варианты,
+                Round = RoundType.Main,
+                QuestionType = QuestionType.CheckBox,
             });
                 context.SaveChanges();
             }

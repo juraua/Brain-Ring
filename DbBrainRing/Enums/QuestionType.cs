@@ -1,9 +1,14 @@
-﻿namespace DbBrainRing.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DbBrainRing.Enums
 {
     public enum QuestionType
     {
-        Выбор,
-        Ответ,
-        Варианты
+        [Display(Name = "Текстове поле")]
+        Text,
+        [Display(Name = "Кілька складових одної відповіді")]
+        CheckBox,
+        [Display(Name = "Кілька варіантів відповіді")]
+        ComboBox
     }
 }

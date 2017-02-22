@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,5 +40,33 @@ namespace LogicBrainRing.Server.HelperClasses
         }
     }
 
+    public static class Helper
+    {
+        public static string GetEnumDisplay(this Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            //Створити окремий клас DisplayAttribute?
+            DisplayAttribute[] attributes = (DisplayAttribute[])fi.GetCustomAttributes(typeof(DisplayAttribute), false);
+
+            if (attributes != null && attributes.Length > 0)
+                return attributes[0].Name;
+            else
+                return value.ToString();
+        }
+
+        //public static T GetEnumValuesByDisplayName<T>(this string enumItem)
+        //{
+        //    var result = Enum.GetValues(typeof(T)).Cast<T>().ToList();
+        //    foreach (var item in result)
+        //    {
+        //        if (item.GetEnumDisplay() == enumItem)
+        //        {
+        //            return item;
+        //            break;
+        //        }
+        //    }
+        //    return null;
+        //}
+    }
 
 }

@@ -11,6 +11,7 @@ namespace DbBrainRing.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        public virtual ICollection<Team> Teams { get; set; } 
+        public virtual ICollection<Team> Teams { get; set; }
+        public int AllPoints { get; set; }
     }
 }

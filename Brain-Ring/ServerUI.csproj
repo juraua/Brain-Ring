@@ -49,14 +49,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JetBrains.Annotations, Version=10.1.5.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.10.1.5\lib\net\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Expression.Effects" />
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.6\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.4.1\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -82,17 +82,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\Components\BrainstormTypeSetControl.xaml.cs">
-      <DependentUpon>BrainstormTypeSetControl.xaml</DependentUpon>
+    <Compile Include="Controls\Components\BrainTeasersTypeSetControl.xaml.cs">
+      <DependentUpon>BrainTeasersTypeSetControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Components\CaptainBattleTypeSetControl.xaml.cs">
       <DependentUpon>CaptainBattleTypeSetControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Components\CathegoriesTypeSetControl.xaml.cs">
-      <DependentUpon>CathegoriesTypeSetControl.xaml</DependentUpon>
+    <Compile Include="Controls\Components\CategoriesTypeSetControl.xaml.cs">
+      <DependentUpon>CategoriesTypeSetControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Components\CommonTypeSetControl.xaml.cs">
-      <DependentUpon>CommonTypeSetControl.xaml</DependentUpon>
+    <Compile Include="Controls\Components\MainTypeSetControl.xaml.cs">
+      <DependentUpon>MainTypeSetControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Components\NumericUpDownControl.xaml.cs">
       <DependentUpon>NumericUpDownControl.xaml</DependentUpon>
@@ -122,7 +122,7 @@
     <Compile Include="Views\GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\Components\BrainstormTypeSetControl.xaml">
+    <Page Include="Controls\Components\BrainTeasersTypeSetControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,11 +130,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Components\CathegoriesTypeSetControl.xaml">
+    <Page Include="Controls\Components\CategoriesTypeSetControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Components\CommonTypeSetControl.xaml">
+    <Page Include="Controls\Components\MainTypeSetControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -268,7 +268,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Backgrounds\brain-ring-background-1366x768.png" />

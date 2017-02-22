@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//Можно удалить - нигде не используется
 namespace LogicBrainRing.Server.Classes
 {
     public class TeamGame : INotifyPropertyChanged
@@ -24,25 +26,27 @@ namespace LogicBrainRing.Server.Classes
 
         #endregion
         public Team Team { get; private set; }
-
-        private int _points;
-
+        
         #region Конструкторы
 
         #endregion
 
         #region Get, Set
 
-        public int Points
-        {
-            get { return _points; }
-            set
-            {
-                if (value == _points) return;
-                _points = value;
-                OnPropertyChanged();
-            }
-        }
+        //public int Game
+        //{
+            
+        //}
+        //public int Points
+        //{
+        //    get { return _points; }
+        //    set
+        //    {
+        //        if (value == _points) return;
+        //        _points = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         #endregion
 
